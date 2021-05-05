@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'realEstate/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'realEstate/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+ <header>
+    <a href="#" class="logo">
+    <img src="{% static 'realEstate/BlueSky.png' %}" alt="Logo">
+    </a>
+    <ul>
+    <li><a href="#">HOME</a></li>
+    
+    </ul>
+    </header>
+
+    <section class="banner"></section>   
+
+<div class="row">
+ <div class="column col-md-4">
+
+ <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm9t4ColDnY4w2KJuyo3VQk9l41rWpG35ullBgK_N31C9lKwMVdS9qm90BkeLUKStT4oY&usqp=CAU" alt="IMG">
+				</div>
+
+				<form action="/Login/" method="post" class="login100-form validate-form"> {% csrf_token %}
+				
+					<span class="login100-form-title">
+						Admin Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button name = "Login_admin" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							--
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+ </div>
+
+  <div class="column col-md-4">
+
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABMlBMVEUJQ1v////wTU4rKyvYrq/YSFD+zMu21dAzMzMAQlzzTU7FSlLHko4AP1gAPFYAN1IANFDSqqsAME3/0dAcJSQmKiqcgH8ALkyjSFS02tUsKSc/RFreSE9jf40mKCjZQUrlS0/y9faGm6be5egSP1SSprCwv8bR2t5viZaer7goLjMeN0VXdYQvQ1rUSFH5Tk3BzNE3X3IRS2JGaXskMzx9lKBGPj6+mZqqtbzRnZrtu7nCp6N+Rle7w7+KR1bVXmQjVWpmVVWujY2Da2w9NzdsW1sOGRmfgYGNdHUAEBAfLjWVhY65mZ5VYXFyb3w1T2NJWWuKf4mvp6mpyMXRurePrq64yMN9nJ+UsrK/t7JlhYxMQFdsRVirQU7MiorldnbNhIbScHPqZmWoRlRiRVmVRlX+2vTmAAAO+UlEQVR4nO2diXLbRhKGQYk2BUk4BCmmGFuUQfCUKPHSLduRj2i9cTbZI1HitZ04m+j9X2EB4iBAzAwG0z0gs7V/VVJlU6bnc/d099xK6X9dyqIbIF3/J/zzqxBC2+4M271W43QvULfR6LWHHdu25f/lcgltZ9jq9kdjy7IMV3ok9xemaVXVUb/baDu2zDbII3Ta3cmNbrlYmqrQpGm6YRrj0V6vI6sdcgg7vb5umrpGJUtK9TjNSWsooy34hK7tVNdynHBxexqWsddzsNuDTOj0Jrqp070ym9IcNXAdFpPQ6Y10g9czGZDGDSYkHuFwUoXjhZDVmwsbqV1IhE5jbCHhBZCm3sUxJAphp28YmHi+dGvSRmgcAmF7ZKKabybNGPcWT9gey+KbytRb9kIJ5dlvxjiGMYIIh/L5PMF8FUDoTKpF8CleYB2LF3TChPZpVaAyE2as9kXLOVHCC0VCfmBJNxpFEjoTs1g+T8aNUAkgRNjDrV94pVW7diGECzGgL0Mg4uQnvNAWYkBfWv7emJfQ7pvioz8MGaOcQTUnYUcpMEWQpRn56vF8hBdYI0CIVPNUGmF3YSEmKWNiSyG0RwUnebp0hT818hM644V3wZk0nTttcBMO1SXogjFZvOMNXsL2YsoYhizOzMhJ2LMWDZSW1UUkbC1JEE2KD5GLsLGEFvRk7CERLiugi9hHIWwtLSAXYjYheh9sNpvu/5HqdzOzL2YS4kXR5uHhycFqqC8OTg6nqEBlImYRtqvwRige3cGXrlbjmv6Giwn86qy8mEHYAawFJvFWyXIpDw6BiOzqhk3oIJRqTTpeSLl6AjJklVmjMgntMRjQ5WPjBZY8Afwdqs4aaTAJJ9DRBB+fzwjwVW1sixGeQseDh6u8gB7jgbir6hMhwjY0T3AbMNShcFgz6BMbdEIHCNjMY8DAjOK90aJOT9EJgVGmmRcPhqjqtElGKmEX1gmFACGI+ignYRtWjTZze2iEKNoXTUptQyF0FuCiAaJw1qAkfgohLBMCAAGIlKxIJryAxdETUR/1JZoXDeIwg0how+rtQxjg6oHoX2yS/JRIuAfzUSCgeEDVbjgJgXH0IJshC1HYTwnxlEQIy/VQH/Uk7KfVdN4nEDZguR7OB4mn6RI8TWjD4ijRhPV6UUZMB5s0ISzMKETAl2c5EcWNmCreUoRDmI+STFhfLb/dKcyI87M2KcIJrF4jtXbnVXlrLa8RhYfDus0mHOL3wp3X5XL5UWFGNFpsQqAJCbmw/rLs6WVRRlRVm0U4hE0AE8qZ+toUsLz1Jh+i+BhjzohzhCOYCdNOWl879wnL56v5EIXdVEmOMZKEHeAqTMpJ6/UQMD+icKxJhtMkYR+WC1NOWr99VS4LIoq7qTamEjrACdJ5J41bcNoXz/JE1G+E22G2aYRdmAnVOSed9cFIr3dymFG4IYlRVJzQhk7iJ01YP0sBlsuv3nCbUTzpK9UOmbAHjDPJbrjzMs2Xy4yAlQx9j0wIXWmKd8N6/S0Z0A04X+/w2RGwHqXZJMIOdLk31g133hA8NGbHOpchxWeLjB6JEBhnYlV3/fbrLRbg9vbVX9ZuMw35pXhTYoOoGaGtAhe0o1nSnbNXLL5y+eHDh9vbW69Xb9mWBIQaxeqkCYHzT7NAs0PtgTFCj/Hh+duz21v6+B+yaDqbk5oRAsf2s0CzkwXoE/qQ5Vevz/7q2pKECVoWvkkR2uA9PH6gWVvbYfbBOGFAebX16Ou129vbHRe0HmMFLe5HbhoRgld8PcI1T/kIfUqP8/zVo9dnZ2/WcAj1xjwh2EmVtUD5CWec2w8fXl29/cL/okPYRpt5QsblFQURRqSPAkJYc0wnSdiBb19DJ4TtBwuTfkjYgp80OFguwnD6OyS8gW/vOlkuQjWYzAgIbYRNpEtGGE7wB4RDBMLDJSMMypqA8BThPAw6IbA9Wj9OCJxFnKq5ZISKYs8I4SWbJ2RC8QnTQH7hpmBlQyUKNViEwK3D4eS3T9hDOXfXxCUEb3P3Z2t8QvDw3hcuIbg5/gjKJwSuOIU6wSSEDCwCVSNCnEATuikSIcJZjGmomRJCN8tGOsAjRDChMj31PSUET9GEauIRYjRnWtUoeKHU0wkWIThVeNL2QsIG3hlmJEIMHw1mTaeEfbwzvk0UQhxAN36GhAiDw0iHCITiK4dz8pYvpoSoNwmcwAnROo3RCQhxTuCF+gZK+A6N0AwIHVxCY4kIhz4hzsgikv4tkPBvaGHBuPAJgTu95qV9ByO8gk/dhvLGTwpmSeNL1UCEiE6q6Kc+4QXyrSz6O5ANv8e7pskbIcogVL8HEG5/i9iakBCvLA2/OMOITMK/I5YfWkCIMKOfVJYRWYBbmI3R+5IIs4zIsiGmCSNCjOngObHDKasXorbFW51RcAdP0VczcyKd8ArrvoygGRNZXppR2NBN+B3uP7a8fuitbQkQbn+LfI9KSIieLTyx/JQGeIV925YmKeP70t9d5bUhahydtkEqoWJQu2IxndCV3pVSec++n4ZIBvwH/j90WHljLAATpVEQiYTvJHhSOHpCHgHPpI1/4Cb8p4xGmMEI2MadxYikjf9VISISAJ/XfpTgSeEsBvJMVCgPsFJ5z0N49bxWqfyE76bRXJukazs9wErt+WUmYfmu5v0oPqJ3HYiCtU8h/e0/VyoUxGQMvbqsBPoJ21GjGWH4vkSCfg7bXbnbvKQTXm1eRz9Yw7biOFqZQXcPVZsBujpPMsb4LmOA6I46W5nBL0zNHysJXW9ubl5uhVPF4UbSS/d33yd/8N+oQ/xodQ095c8DuiF109elp7L7X/Dr57WKPMTpdhPcVe5AegqwUgsRk7qbB0RFNKNVbnuM9qWejJ9SzfZCaprv/I7wg4iIloO928RXlQRY8ULqPCD55yp9LEQLfceQJ5VoQV/nCcDrtIfiIvpHgzB3fXk6+tCgAvohNdR7KqCLiOJTeje2cw8jmKpHH3c3jp/QTZNAZAHWLj89+wA9hhXuZQ92X46hX6d+uN948OTJgwcP9n9hIYYhNZUlYnyVXwfrg/WnG/dAymmgCXfQAkPNH7vHU7qp9r8i5ICo+X5IJQbR4CferwxWPK0PBisbz47EWzWO7aAF1W2u9WZ4U8QHLE+9owfRKeAvg/WVSK4tN14ciVlST+yCFq9qPs7h+YyfGQx31/TPane/DlaSWnct+VGEMbg9Anga4cVxGi/LU2sMH/5hZX0lrfXB0/v8bTM7cUKhIWKTxuch7tM8tfb+Nxp90kMTGqzs5nXW5IkSgYyoPqPzBZ5KAqmd7+8fE1MFwUPnGHO1LziMMDvZlXeu5vEGk2/qqYSUUPu87320Sfjkh6c0A4aMT1/kMKO30yROWMpZfL/I4pt66vkcSO3uq33/o99SBqZ7aKw/HvMnj/nTefmWSY8yDUj01Nr1g32ygWvP/8Py0BnjyjNOM0YHgSPCPNuGHrN7IM1Ta5v7sU/iSbN2TYyhRFe950OMbhqanXTmd9MPx5x8U5LQU2uV3/aTn3wOEWufsz10hviJCzG6X3B2Wp17BPWY14ABiN/lau+P9+c/8ZMmr4fmQpxdqjAj5C1rjvJY0Adxk0Ptep7P+8RLG7Utbg8NEXezEWfXYcVujeB0U84gkyC59JME6ZPK51wG9BGfZbbSdNKEnNGUJ02k9HSFguEWnfkBXZtntTJ2B2aMkGsj7ZEAnwuIrPWsrhh7QTB+Aw9Pbfq7gAmx+TzED8xWqopNJORZ7c4P+EQC4Mrgd6YR9dit0ImbsLIBn+UmRPfQqdafMpsZv2w3cZtZ9kj/U15AKXyuBo8ZrUzctZu8kS6rI6ob+fikeKhPyEoY1pBGmFnXqPmyvRwP9QkZg/7kTbtJQicj1uSrZ+TxuR2RMRxOXCo4f7tnxmTz46Xw0AxC7cZmEGYM9XMQSvTQDMK5u5Lnb9ll3+/JTyiXj0k4LjEJ2SsYvIRyPZRNaF6wCdn7MjgJJXsokzD1PkKKkHlLKx+hfD4GYepZpPSt86yXungI5XsoizD9dADh5QDGAyUchAV4KIvQSD0yR3j94YIebLIJi+GjEurpp2ZIL3jQx4lZNU0xHsogtGwuwg61J2ZU3gV5qKfBC1L7Ug8jUAgZweaeNT4sjs+1IWn0RHihhPYaEvVGYcbgojgPXfHmTEmtM0ivyxEJGQ8IfFgCD3UBj4k+2iKxkAkZL+dRVtWK5FsfbJBaln6AhUVoMy6S+PjpiaeEAdcLk7dB4w9ixia8hMQgzKjAP97f328I6tOuq0+Cf3h398UflDbRngWmEWYfaFNFBfnD9ObotDfIqYSlkaQd/HJEfzCXTmgjvOdcnKrUR4/phDjb+QoS421uBiH4rYTiRH7bMZuwtCfnYCK69JEtSPgniTaawgDMILRv/gSIqkl77JiDsOTA34+XLuLro9yEbkBFvQJAghhhlIvQHWYsN6JFHFDkISwNjWVGzATkIJR21BtDtMe48xGW2pLOCcNlZQNyEZba1nI6KocFOQmhj5NKUnYf5CdcSkQ+QF7CUqe6ZKlfrWbkwbyEJWe5CjjNYFcyAoQle7JEnqqPmbWoGKE7mJJ1f0ZuGRObu9V5CEs9azk6o8UY8MIIS53xEnRGTeeMMSKEbmdceAlnjKmTThiEpVJjsWlDre7Z+Rqcm7DUuVlgTNW1+Y0IEghLpa65IDOq5oQ7SYAIS8PxQsyo5wsxEMKSfbqA3mj18xtQmNDtjaOCg6oxzt0DYYSl0oVSoKvqRsMWbKc4oeuqVkH5X6uKOSiU0B1v7BXBqJmTfDkekdDtjn1DMqNmjnjHSVIIPUaZdtSqI8EAg0fo+mq3KmlKVa9OYPZDInRjTkMx0POjZuhd8fgyEwqhy9iemKiG1M1RD4MPjdCVc6pg9UjdNLqQ8JkQHqGrYVc3dai7aobZb9t4jUIlLHmQN4Z4n3Tpxqh4JXxCV51WX7fyU2q6aU4aHRu7ORIIXdnD1sSyDF6P1XTDrI4ayMYLJIdwqs5Fd+QFDV3TaO+qaLrLZmg3e72hLasZEgmncoa90/7kRtEtyzTiMi1dHY/63d4Q3zETkk3oy7YdpzPs9XqthqdWr9ceOo5jF/F3F0O4SP0XnfUfVb4NGYQAAAAASUVORK5CYII=" alt="IMG">
+				</div>
+
+				<form action="/Login/" method="post" class="login100-form validate-form"> {% csrf_token %}
+					<span class="login100-form-title">
+						Customer Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button name = "Login_buyer" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					
+
+					<div class="text-center p-t-136">
+						<!-- <a class="txt2" href="#">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a> -->
+						<a class="txt2" href="../Registration"  target="popup" onclick="window.open('../Registration','popup','width=600,height=600'); return false;">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+ </div>
+
+
+
+ <div class="column col-md-4">
+
+ <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzy41Se0MDkOHC8ZiMqFoqbDpm9MkcW6Hlia_ClnEwhf9pJqF09gBByQllTVjKUV7YdJo&usqp=CAU" alt="IMG">
+				</div>
+
+				<form action="/Login/" method="post" class="login100-form validate-form"> {% csrf_token %}
+					<span class="login100-form-title">
+						Agent Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button name = "Login_agent" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							--
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+ </div>
+
+
+</div>
+	
+
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="{% static 'realEstate/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'realEstate/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'realEstate/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'realEstate/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'realEstate/vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'realEstate/js/main.js' %}">
+    </script>
+	
+
+</body>
+</html>
+
+

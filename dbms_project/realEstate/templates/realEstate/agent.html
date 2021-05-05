@@ -1,0 +1,229 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent</title>
+    <link rel="icon" type="image/png" href="{% static 'realEstate/images/icons/favicon.ico' %}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'realEstate/agent1.css' %}">
+</head>
+<body>
+
+    <!-- ----------------------- NAVBAR ----------------------- -->
+
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'realEstate/BlueSky.png' %}" alt="Logo">
+            <!-- <span id="logotext" >BlueSky Homes</span> -->
+        </a>
+        <ul>
+            <li>
+                <a href="#">HOME</a>
+            </li>
+            <li>
+                <a href="../Login">LOGIN</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- --------------------------- UPPER PART ------------------------ -->
+
+    <div class="upper">
+        <div class="content">
+            <div class="textbox">
+                <h2>Helping you find the property of your dreams.</h2>
+            </div>
+			<button id="myBtn" class="add"> + Add Property</button>
+        </div>
+        <div class="agentinfocard">
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM-gkejqmGASWgZIQmq04pjj37OUTMTVR00W8TTPVS1AGglMptC-f1-r0QrPqIfleKDbo&usqp=CAU" alt="profile">  
+                </div>
+                <div class="desc">
+                    <h6 class="primary-text">{{ agentName }}</h6>
+                    <h6 class="secondary-text">{{ agentID }}</h6>
+                    <h6 class="secondary-text">Total Sale: {{ tSale }}</h6>
+                    <h3 id="cnumber">(+91){{contact}}</h3>
+                </div>
+                <!-- <button class="primary-text">Contact Number</button> -->
+                <div class="details-1">
+                    <div class="rating">
+                        <h6 class="primary-text">{{ NOS }}</h6>
+                        <h6 class="secondary-text">Properties Sold</h6>
+                    </div>
+                    <div class="activity">
+                        <h6 class="primary-text">{{ NOR }}</h6>
+                        <h6 class="secondary-text">Properties Rented</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------- FORM POPUP ----------------------- -->
+    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="container">
+                <div class="title">Property Details</div>
+                    <div class="content">
+                        <form action="/Agent/" method="post"> {% csrf_token %}
+                            <div class="user-details">
+                                <div class="input-box">
+                                    <span class="details">AgentID</span>
+                                    <!-- <input type="text" placeholder="Enter your AgentID" value = "{{ agentID }}" name = "agent" readonly required> -->
+                                    <input type="text" value = "{{ agentID }}" name = "agent" readonly required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">UserID</span>
+                                    <input type="text" placeholder="Enter your UserID" name  = "user" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">AvailableFor</span>
+                                    <input type="text" placeholder="Enter Availability(Rent/Sale)" name = "avail" required>
+                                </div>
+                                <!-- <div class="input-box">
+                                    <span class="details">Status</span>
+                                    <input type="text" placeholder="Enter Status('Available')" name = "status" required>
+                                </div> -->
+                                <div class="input-box">
+                                    <span class="details">Price</span>
+                                    <input type="text" placeholder="Enter Price" name = "price" required>
+                                </div>          
+                                <div class="input-box">
+                                    <span class="details">Area in sq ft.</span>
+                                    <input type="text" placeholder="Enter the area" name = "area" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Parking</span>
+                                    <input type="text" placeholder="Enter Parking(Yes/No)" name = "parking" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">BHK</span>
+                                    <input type="text" placeholder="Enter BHK" name = "bhk" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Owner</span>
+                                    <input type="text" placeholder="Enter Owner Name" name = "owner" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Locality</span>
+                                    <input type="text" placeholder="Enter Locality" name = "locality" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Pincode</span>
+                                    <input type="text" placeholder="Enter Pincode" name = "pin" required>
+                                </div> 
+                            </div>
+                            <div class="gender-details">
+                                <input type="radio" name="gender" value = "apartment" id="dot-1">
+                                <input type="radio" name="gender" value = "house" id="dot-2">
+                                <input type="radio" name="gender" value = "shop" id="dot-3">
+                                <input type="radio" name="gender" value = "commercial" id="dot-4">
+                                <span class="gender-title">Type</span>
+                                <div class="category">
+                                    <label for="dot-1">
+                                        <span class="dot one"></span>
+                                        <span class="gender">Apartment</span>
+                                    </label>
+                                    <label for="dot-2">
+                                        <span class="dot two"></span>
+                                        <span class="gender">House</span>
+                                    </label>
+                                    <label for="dot-3">
+                                        <span class="dot three"></span>
+                                        <span class="gender">Shop</span>
+                                    </label>
+                                    <label for="dot-4">
+                                        <span class="dot four"></span>
+                                        <span class="gender">Commercial</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <input name = "addProperty" type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+    <!-- ---------------------- PLACARDS -----------------------  -->
+    {% for serial, price, area, bhk, parking, owner, status, AF, name, type, locality in cardData %}
+	<div class="results">
+        <div class="placards">
+            <div class="img"> 
+                <img src="{% static 'realEstate/ghar3.0.jpg' %}" alt="img">
+            </div>
+            <div class="info">
+                <div class="oneinfo">
+                     {{bhk}} BHK {{ type }} in {{ locality }}, New Delhi
+                </div>
+                <div class="twoinfo">
+                    <span class="intwoinfo">Rs. {{ price }}</span>
+                    <span class="intwoinfo">{{ area }} sqft.</span>
+                    <span class="intwoinfo">{{ bhk }} BHK</span>
+                    {% if parking == 'Yes' %}
+                        <span class="intwoinfo">Parking Available</span>
+                    {% else %}
+                        <span class="intwoinfo">Parking Unavailable</span>
+                    {% endif %}
+                </div>
+                <div class="threeinfo">
+                    <span class="inthreeinfo">
+                        Owner: {{ owner }}
+                    </span>
+                    {% if status == 'Available' and AF == 'Rent' %}
+                        <span class="inthreeinfo">
+                            <form action="/Agent/" method="post"> {% csrf_token %}
+                                <input name = "change" value = "{{ serial }} Rented {{ price }}" type = "hidden">
+                                <button  type = "submit" id="myBtn1" name = "changeStatus">Change Status</button>
+                            </form>
+                            <!-- <button name = "changeStatus" id="myBtn1">Change Status</button> -->
+                        </span>
+                    {% elif status == 'Available' and AF == 'Sale' %}
+                        <span class="inthreeinfo">
+                            <form action="/Agent/" method="post"> {% csrf_token %}
+                            <!-- <button name = "changeStatus" id="myBtn1">Change Status</button> -->
+                                <input name = "change" value = "{{ serial }} Sold {{ price }}" type = "hidden">
+                                <button type = "submit" name = "changeStatus" id="myBtn1" value = "{{ serial }} Sold" >Change Status</button> {% csrf_token %}
+                            </form>
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="threeinfo">
+                    {% if status == 'Available' %}
+                        <span class="inthreeinfo">
+                            Status: Available for {{ AF }}
+                        </span>
+                    {% else %}
+                        <span class="inthreeinfo">
+                            Status: {{ status }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div> 
+        </div>
+	</div>
+    {% endfor %}
+
+    <script type="text/javascript" src="{% static 'realEstate/agent.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

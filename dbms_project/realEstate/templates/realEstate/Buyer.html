@@ -1,0 +1,405 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BlueSky Homes</title>
+    <link rel="icon" type="image/png" href="{% static 'realEstate/images/icons/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'realEstate/Buyer.css' %}">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+</head>
+<body>
+    <!-- <div class="input-group">
+        <div class="form-outline">
+			<input id="search-input" type="search" id="form1" class="form-control" />
+			<label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="button" class="btn btn-outline-primary">search</button> -->
+        <!-- <button id="search-button" type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+    </div> -->
+
+    <!-- <div class="search-filter-nav">
+        <form class="search-container" style="flex: 1;">
+            <input type="text" id="search-bar" placeholder="Search Cities..">
+            <div class="search-icon-div"><i class="fas fa-search"></i></div>
+        </form>
+        <div onclick="myFunction()" class="anyPrice-div box-size-nav-u custom-test dropdown dropbutton" style="flex: 1; list-style-type: none;">
+            <div class="dropdown">
+                <a onclick="myFunction()" class="dropdown dropbutton">Any Price <i class="fas fa-caret-down" style="margin: 0px 4px;"></i></a>
+                    <div id="myDropdown" class="dropdown-content"">
+                        <li><a>Any Price</a></li>
+                        <li><a>$250k-$500k</a></li>
+                        <li><a>$500k-$1M</a></li>
+                        <li><a>$1M-$100m</a></li>
+                    </div>
+            </div>
+        </div>
+
+        <div class="allBeds-div box-size-nav-u custom-test" style="flex: 1; margin-left: -5px;">
+            All Beds
+            <i class="fas fa-caret-down" style="margin: 0px 4px;"></i>
+        </div>
+
+        <div class="allhomes-div box-size-nav-uon custom-test" style="flex: 1; padding: 0px 7px;">
+            All Home Types
+            <i class="fas fa-caret-down" style="margin: 0px 4px;"></i>
+        </div>
+        <div class="more-div box-size-nav-uon custom-test" style="flex: 1; margin-left: -5px;">
+            More
+            <i class="fas fa-caret-down" style="margin: 0px 4px;"></i>
+        </div>
+
+        <div class="saveSearch-div box-size-nav-uon " style="flex: 3; margin: 2px 0px;">
+            <button>
+            Save Search</button>
+        </div>
+    </div> -->
+
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'realEstate/BlueSky.png' %}" alt="Logo">
+            <span id="logotext" >BlueSky Homes</span>
+        </a>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="../Login">LOGIN</a></li>
+            <!-- <li><a href="#">SERVICES</a></li>
+            <li><a href="#">CONTACT</a></li> -->
+        </ul>
+    </header>
+    
+    <section class="banner"></section> 
+
+    <div class="upper">
+
+        <div class="heading"> BlueSky Homes </div>
+        <div class="tagline">-- FIND THE BEST HOMES ACCORDING TO YOUR NEEDS --</div>
+
+        <!-- ----------------SEARCH BAR------------------ -->
+
+        <div class="park-search homepage" style="margin: 60px 0">
+        
+                <!-- 	<div class="box-lable" id="parks-search">
+                        <img src="/wp-content/uploads/2018/09/icon-logo-box.png" alt="logo">
+                        <div class="box-cnt-makeabook"> 
+                            <h4>MAKE A BOOKING</h4> 
+                            <p>Select your park &amp; date for availabilty</p>
+                        </div>
+                        <span class="mobile-toggal-s">
+                            <i class="twf twf-chevron-down"></i>
+                        </span>
+                    </div> -->
+                    
+                    <form action="/Customer/" method="post" name="reservation" id="reservation">  {% csrf_token %}
+                        <ul>
+                            <li id="normal">  
+                                <span class="date-range-instruct">SALE/RENT</span> 
+                                <select name="salerent" id="edit-park" class="select-1">
+                                    <!-- <option value="0">ANY</option>  -->
+
+                                    <option value="SALE">SALE</option>
+                                    <option value="RENT">RENT</option>
+                                </select> 
+                                <span class="vdate-h" id="spark" style="display:none;">Please select the Parks</span> 
+                            </li>
+                            <li class="housetype" id="normal">  
+                                <span class="date-range-instruct">TYPE</span> 
+                                <select name="htype" id="edit-park" class="select-1">
+                                    <!-- <option value="0">TYPE</option> -->
+                                    <option value="APARTMENT">APARTMENT</option>
+                                    <option value="HOUSE">HOUSE</option>
+                                    <option value="SHOP">SHOP</option>
+                                    <option value="COMMERCIAL OFFICE">COMMERCIAL OFFICE</option>
+                                </select> 
+                                <span class="vdate-h" id="spark" style="display:none;">Please select the Parks</span> 
+                            </li>
+                            
+                            <li id="priceslider">
+                                <span id="psliderspan" class="date-range-instruct">AREA</span>
+                                <div data-role="rangeslider">
+                                    <!-- <label for="price-min">Price:</label> -->
+                                    <input class="w3slider" type="range" name="areamin" id="price-min" value="100" min="100" max="2000">
+                                    <!-- <label for="price-max">Price:</label> -->
+                                    <input class="w3slider" type="range" name="areamax" id="price-max" value="2000" min="100" max="2000">
+                                </div>
+                            </li>
+                            <li id="normal"> 
+                                <span class="date-range-instruct">BHK</span> 
+                                <select name="bhk" id="infants" class="select-2"> 
+                                    <!-- <option>ANY</option>  -->
+                                    <option value="1">1BHK</option> 
+                                    <option value="2">2BHK</option> 
+                                    <option value="3">3BHK</option> 
+                                    <option value="4">4BHK</option> 
+                                    <option value="5">5BHK</option> 
+                                </select> 
+                            </li>
+                            <li id="priceslider">
+                                <!-- <span class="date-range-instruct">AREA</span>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+                                    <p>Value: <span id="demo"></span></p>
+                                </div> -->
+                                <!-- <span class="date-range-instruct">PRICE</span>
+                                    <section class="range-slider">
+                                        <input value="5000" min="5000" max="1200000" step="500" type="range">
+                                        <input value="1200000" min="5000" max="1200000" step="500" type="range">
+                                        <span class="rangeValues"></span>
+                                    </section> -->
+                                <span id="psliderspan" class="date-range-instruct">PRICE</span>
+                                <div data-role="rangeslider">
+                                    <!-- <label for="price-min">Price:</label> -->
+                                    <input class="w3slider" type="range" name="pricemin" id="price-min" value="5000" min="5000" max="1200000">
+                                    <!-- <label for="price-max">Price:</label> -->
+                                    <input class="w3slider" type="range" name="pricemax" id="price-max" value="1200000" min="5000" max="1200000">
+                                </div>
+                            </li>
+                            <li id="search">
+                                <input name="op" type="submit" value="Search" id="edit-submit" class="submit"> 
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+    </div>
+
+    <!-- -------------------PLACARDS------------------ -->
+    {% for price, area, bhk, parking, owner, status, name, contact, NOS, NOR, type, locality in arr %}
+    <div class="results">
+        <div class="placards">
+            <div class="img"> 
+                <img src="{% static 'realEstate/ghar3.0.jpg' %}" alt="">
+            </div>
+            <div class="info">
+                <div class="oneinfo">
+                    {{ bhk }} BHK {{ type }} in {{ locality }}, New Delhi
+                </div>
+                <div class="twoinfo">
+                    <span class="intwoinfo">Rs. {{ price }}</span>
+                    <span class="intwoinfo">{{ area }} sqft.</span>
+                    <span class="intwoinfo">{{ bhk }} BHK</span>
+                    {% if parking == 'Yes' %}
+                        <span class="intwoinfo">Parking Available</span>
+                    {% else %}
+                        <span class="intwoinfo">Parking Unavailable</span>
+                    {% endif %}
+                </div>
+                <div class="threeinfo">
+                    <span class="inthreeinfo">
+                        Owner: {{owner}}
+                    </span>
+                    <span class="inthreeinfo">
+                        <button id="myBtn" class = "card{{forloop.counter}}" onclick = "openPOPUP('{{forloop.counter}}')">Agent Info</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal content -->
+        <div id="myModal" class="modal popup{{forloop.counter}}">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h2>Modal Header</h2> -->
+                    <span class="close" onclick = "closePOPUP('{{forloop.counter}}')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <span class="ques">
+                            Agent Name:
+                        </span>
+                        <span class="ans">
+                            {{ name }}
+                        </span>
+                    </p>
+                    <p>
+                        <span class="ques">
+                            Contact No.:
+                        </span> 
+                        <span class="ans">
+                            (+91){{ contact}}
+                        </span>
+                    </p>
+                    <p>
+                        <span class="ques">
+                            No. of Properties Sold:
+                        </span>
+                        <span class="ans">
+                            {{ NOS }}
+                        </span>
+                    </p>
+                    <p>
+                        <span class="ques">
+                            No. of Properties Rented:
+                        </span>
+                        <span class="ans">
+                            {{ NOR }}
+                        </span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <!-- <h3>Modal Footer</h3> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <!-- why we are best -->
+    <div class="whycontainer">
+        <p class="infoheading">
+            Why we are the best
+        </p>
+        <p class="infodesc">
+            Who are in extremely love with eco friendly system
+        </p>
+        <div class="infoboxup">
+            <div class="infoboxwrapper">
+                <div id="infobox" class="infobox1">
+                    <p class="infoboxheading">
+                        Expert Technicians (Sangaja Patel)
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div id="infobox" class="infobox2">
+                    <p class="infoboxheading">
+                        Professional Service (Vaibhav Kesarvani)
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div id="infobox" class="infobox3">
+                    <p class="infoboxheading">
+                        Great Support
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="infoboxdown">
+            <div class="infoboxwrapper">
+                <div id="infobox" class="infobox4">
+                    <p class="infoboxheading">
+                        Technical Skills (Rahul Soni)
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div id="infobox" class="infobox5">
+                    <p class="infoboxheading">
+                        Highly Recomended
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div id="infobox" class="infobox6">
+                    <p class="infoboxheading">
+                        Positive Reviews
+                    </p>
+                    <p class="infoboxdesc">
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ******************** FOOTER ********************** -->
+
+    <footer class="container-fluid bg-grey py-5">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-6">
+                 <div class="row">
+                    <div class="col-md-6 ">
+                       <div class="logo-part">
+                          <!-- <img src="https://i.ibb.co/sHZz13b/logo.png" class="w-50 logo-footer" > -->
+                          <p class="companyname"> BlueSky Homes </p>
+                          <p>Most Useful Website to Find Homes</p>
+                          <!-- <p>Use this tool as test data for an automated system or find your next pen</p> -->
+                       </div>
+                    </div>
+                    <div class="col-md-6 px-4">
+                       <h6> About Company</h6>
+                       <p>But horizontal lines can only be a full pixel high.</p>
+                       <a href="#" class="btn-footer"> More Info </a><br>
+                       <a href="#" class="btn-footer"> Contact Us</a>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="row">
+                    <div class="col-md-6 px-4">
+                       <h6> Help us</h6>
+                       <div class="row ">
+                          <div class="col-md-6">
+                             <ul>
+                                <li> <a href="#"> Home</a> </li>
+                                <li> <a href="#"> About</a> </li>
+                                <li> <a href="#"> Service</a> </li>
+                                <li> <a href="#"> Team</a> </li>
+                                <li> <a href="#"> Help</a> </li>
+                                <li> <a href="#"> Contact</a> </li>
+                             </ul>
+                          </div>
+                          <div class="col-md-6 px-4">
+                             <ul>
+                                <li> <a href="#"> Cab Faciliy</a> </li>
+                                <li> <a href="#"> Fax</a> </li>
+                                <li> <a href="#"> Terms</a> </li>
+                                <li> <a href="#"> Policy</a> </li>
+                                <li> <a href="#"> Refunds</a> </li>
+                                <li> <a href="#"> Paypal</a> </li>
+                             </ul>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-6 ">
+                       <h6> Newsletter</h6>
+                       <div class="social">
+                          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                       </div>
+                       <form class="form-footer my-3">
+                          <input type="text"  placeholder="search here...." name="search">
+                          <input type="button" value="Go" >
+                       </form>
+                       <p>That's technology limitation of LCD monitors</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        </footer>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+    <script src="{% static 'realEstate/Buyer.js' %}"></script>
+</body>
+</html>

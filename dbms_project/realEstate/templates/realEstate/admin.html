@@ -1,0 +1,260 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="{% static 'realEstate/images/icons/favicon.ico' %}"/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'realEstate/admin1.css' %}">
+</head>
+<!-- navbar html -->
+<body>
+    <header>
+        <a href="#" class="logo">
+        <img src="{% static 'realEstate/BlueSky.png' %}" alt="Logo">
+        </a>
+        <ul>
+        <li><a href="#" style = "margin-right: 51vw;">BLUE SKY HOMES</a></li>    
+        <li><a href="#">HOME</a></li>
+        <li><a href="../Login">LOGIN</a></li>
+        </ul>
+    </header>
+
+    <section class="banner"></section>
+    <div class="wrapper">
+        <!-- button_html -->
+        <button class="button" href="../addAgent"  target="popup" onclick="window.open('../addAgent','popup','width=600,height=600'); return false;">ADD AGENT</button>
+        
+        <div class="park-search homepage" style="margin: 136px 0">
+            
+            <!-- tag line html -->
+            <div class = "tag" style="font-size: 32px;font-weight: 900;">
+                <p id="heading" >Hi!! Admin</p>
+                <p id="tagline" >Welcome to the admin panel</p>
+            <!-- Hi Admin, Welcome to the admin panel of Blue Sky Homes  -->
+            </div>
+            <ul>
+                <li>    
+                    <form action="/Administrator/" method="post" name="reservation" id="reservation" style = "margin-bottom: 1vh;"> {% csrf_token %} 
+                        <ul>
+                            <li>  
+                                <span class="date-range-instruct" style = "margin-left: -8vw;font-weight: 800;">PROPERTY BASED FILTER</span> 
+                                <select name="propertyBased" id="edit-park" class="select-1" style = "margin-right: -2vw;"> 
+                                    <option value="AFR">Available properties for rent</option> 
+                                    <option value="AFS">Available properties for sale</option> 
+                                    <option value="Rented">Properties On Rent</option> 
+                                    <option value="Sold">Properties On Sale</option>    
+                                </select>  
+                            </li>
+                            <li> 
+                                <input name="op1" type="submit" value="Search" id="edit-submit" class="submit" style = "margin-right: 5vw;"> 
+                            </li>
+                        </ul>
+                    </form>
+                </li>
+                <li>
+                    <form action="/Administrator/" method="post" name="reservation" id="reservation" style = "margin-bottom: 1vh;"> {% csrf_token %}
+                        <ul>
+                            <li> 
+                                <span class="date-range-instruct" style = "margin-left: -7vw;font-weight: 800;">AGENT NAME</span> 
+                                <select name="agentBased" id="infants" class="select-2"> 
+                                    <option value="Bajraj Rao">Bajraj Rao</option> 
+                                    <option value="Raman Singh">Raman Singh</option> 
+                                    <option value="Aman Patel">Aman Patel</option> 
+                                    <option value="Shiv Giri">Shiv Giri</option> 
+                                    <option value="Sanit Raj">Sanit Raj</option> 
+                                    <option value="Shantanu Maurya">Shantanu Maurya</option> 
+                                    <option value="Anshul Joshi">Anshul Joshi</option> 
+                                    <option value="Shradha Singh">Shrahda Singh</option> 
+                                    <option value="Diwakar Maurya">Diwakar Maurya</option> 
+                                    <option value="Piyush Jha">Piyush Jha</option> 
+                                    <option value="Omang">Omang</option> 
+                                    <option value="Anshika Singh">Anshika Singh</option> 
+                                </select> 
+                            </li>
+                            <li>
+                                <input name="op2" type="submit" value="Search" id="edit-submit" class="submit" style = "margin-left: -2vw;"> 
+                            </li>
+                        </ul>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<!-- placards html -->
+    {% if filter == 'propBased' %}
+        {% for serial, price, area, bhk, parking, owner, type, locality, status, AF, date in arr %}
+            <!-- <div class="results">
+                <div class="placards">
+                    <div class="img"> 
+                        <img src="{% static 'realEstate/hs1.jpg' %}" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="oneinfo">
+                            {{ bhk }} BHK Apartment in New Delhi
+                        </div>
+                        <div class="twoinfo">
+                            <span class="intwoinfo">Rs. {{ price }}</span>
+                            <span class="intwoinfo">{{ area }} sqft.</span>
+                            <span class="intwoinfo">{{ bhk }} BHK</span>
+                            {% if parking == 'Yes' %}
+                                <span class="intwoinfo">Parking Available</span>
+                            {% else %}
+                                <span class="intwoinfo">Parking Unavailable</span>
+                            {% endif %}
+                        </div>
+                        <div class="threeinfo">
+                            <span class="inthreeinfo">
+                                Owner: {{ owner }}
+                            </span>
+                            <span class="inthreeinfo">
+                                <button id="myBtn">Agent Info</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="results">
+                <div class="placards">
+                    <div class="img"> 
+                        <img src="{% static 'realEstate/ghar3.0.jpg' %}" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="oneinfo">
+                            {{ bhk }} BHK {{ type }} in {{ locality }}, New Delhi
+                        </div>
+                        <div class="twoinfo">
+                            <span class="intwoinfo">Rs. {{ price }}</span>
+                            <span class="intwoinfo">{{ area }} sqft.</span>
+                            <span class="intwoinfo">{{ bhk }} BHK</span>
+                            {% if parking == 'Yes' %}
+                                <span class="intwoinfo">Parking Available</span>
+                            {% else %}
+                                <span class="intwoinfo">Parking Unavailable</span>
+                            {% endif %}
+                        </div>
+                        <div class="threeinfo">
+                            <span class="inthreeinfo">
+                                Owner: {{owner}}
+                            </span>
+                            <span class="inthreeinfo">
+                                <button id="myBtn" class = "card{{forloop.counter}}" onclick = "openPOPUP('{{forloop.counter}}')">Agent Info</button>
+                            </span>
+                        </div>
+                        <div class="threeinfo">
+                            {% if status == 'Available' %}
+                            {% else %}
+                                <span class="inthreeinfo">
+                                    Date of {{ status }}: {{ date }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for name, contact, NOS, NOR in agentdetails %}
+                <!-- Modal content -->
+                <div id="myModal" class="modal popup{{forloop.counter}}">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- <h2>Modal Header</h2> -->
+                            <span class="close" onclick = "closePOPUP('{{forloop.counter}}')">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <span class="ques">
+                                    Agent Name:
+                                </span>
+                                <span class="ans">
+                                    {{ name }}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="ques">
+                                    Contact No.:
+                                </span> 
+                                <span class="ans">
+                                    (+91){{ contact }}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="ques">
+                                    No. of Properties Sold:
+                                </span>
+                                <span class="ans">
+                                    {{ NOS }}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="ques">
+                                    No. of Properties Rented:
+                                </span>
+                                <span class="ans">
+                                    {{ NOR }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <h3>Modal Footer</h3> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% elif filter == 'agentBased' %}
+        {% for price, area, bhk, parking, owner, status, AF, name, type, locality, date in arr %}
+            <div class="results">
+                <div class="placards">
+                    <div class="img"> 
+                        <img src="{% static 'realEstate/ghar3.0.jpg' %}" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="oneinfo">
+                            {{ bhk }} BHK {{ type }} in {{ locality }}, New Delhi
+                        </div>
+                        <div class="twoinfo">
+                            <span class="intwoinfo">Rs. {{ price }}</span>
+                            <span class="intwoinfo">{{ area }} sqft.</span>
+                            <span class="intwoinfo">{{ bhk }} BHK</span>
+                            {% if parking == 'Yes' %}
+                                <span class="intwoinfo">Parking Available</span>
+                            {% else %}
+                                <span class="intwoinfo">Parking Unavailable</span>
+                            {% endif %}
+                        </div>
+                        <div class="threeinfo">
+                            <span class="inthreeinfo">
+                                Owner: {{ owner }}
+                            </span>
+                            <!-- <span class="inthreeinfo">
+                                <button id="myBtn">Agent Info</button>
+                            </span> -->
+                            <span class="inthreeinfo">
+                                Agent: {{ name }}
+                            </span>
+                        </div>
+                        <div class="threeinfo">
+                            {% if status == 'Available' %}
+                                <span class="inthreeinfo">
+                                    Status: Available for {{ AF }}
+                                </span>
+                            {% else %}
+                                <span class="inthreeinfo">
+                                    Status: {{ status }}
+                                </span>
+                                <span class="inthreeinfo">
+                                    Date of {{ status }}: {{ date }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}    
+    {% endif %}
+<script src="{% static 'realEstate/admin.js' %}"></script>
+</body>
+</html>
